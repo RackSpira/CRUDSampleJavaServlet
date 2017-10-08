@@ -64,12 +64,16 @@ public class JurusanDaoImpl implements JurusanDao {
     @Override
     public List<Jurusan> find(int offset, int limit) {
         List<Jurusan> jurusans = new ArrayList<>();
-        String sql = "SELECT * FROM jurusan ";
+        String sql = "SELECT * FROM jurusan " +
+                "ORDER BY id DESC ";
+
+        if (offset != 0 && limit != 0) {
+            sql += "limit ?, ?";
+        }
 
         try {
             PreparedStatement statement = DbConnection.getInstance().getConnection().prepareStatement(sql);
             if (offset != 0 && limit != 0) {
-                sql += ("limit ?, ?");
                 statement.setInt(1, offset);
                 statement.setInt(2, limit);
             }

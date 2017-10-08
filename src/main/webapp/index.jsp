@@ -13,10 +13,10 @@
 		<a class="navbar-brand" href="#">CRUD Java Servlet</a>
 		<ul class="nav navbar-nav">
 			<li>
-				<a href="#">Master Mahasiswa</a>
+				<a href="/mahasiswa">Master Mahasiswa</a>
 			</li>
 			<li>
-				<a href="#">Master Jurusan</a>
+				<a href="/jurusan">Master Jurusan</a>
 			</li>
 		</ul>
 	</nav>

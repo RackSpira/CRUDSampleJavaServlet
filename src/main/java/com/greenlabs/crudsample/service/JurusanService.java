@@ -17,6 +17,8 @@ public class JurusanService implements BaseService<Jurusan> {
     public Jurusan Save(Jurusan entity) {
         if (entity.getId() == 0) {
             entity = jurusanDao.Save(entity);
+        }else {
+            entity = jurusanDao.update(entity);
         }
 
         return entity;

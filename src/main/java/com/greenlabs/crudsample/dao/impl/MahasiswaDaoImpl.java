@@ -15,6 +15,7 @@ import java.util.List;
  * Created by kristiawan on 10/7/17.
  */
 public class MahasiswaDaoImpl implements MahasiswaDao {
+
     @Override
     public Mahasiswa Save(Mahasiswa entity) {
         String sql = "INSERT INTO mahasiswa VALUES(?, ?, ?, ?)";
@@ -66,12 +67,16 @@ public class MahasiswaDaoImpl implements MahasiswaDao {
     @Override
     public List<Mahasiswa> find(int offset, int limit) {
         List<Mahasiswa> mahasiswas = new ArrayList<>();
-        String sql = "SELECT * FROM mahasiswa ";
+        String sql = "SELECT * FROM mahasiswa " +
+                "ORDER BY id DESC ";
+
+        if (offset != 0 && limit != 0) {
+            sql += "limit ?, ? ";
+        }
 
         try {
             PreparedStatement statement = DbConnection.getInstance().getConnection().prepareStatement(sql);
             if (offset != 0 && limit != 0) {
-                sql += ("limit ?, ?");
                 statement.setInt(1, offset);
                 statement.setInt(2, limit);
             }

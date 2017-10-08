@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: kristiawan
   Date: 10/8/17
-  Time: 2:27 PM
+  Time: 11:18 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
@@ -20,24 +20,24 @@
     <nav class="navbar navbar-inverse">
         <a class="navbar-brand" href="#">CRUD Java Servlet</a>
         <ul class="nav navbar-nav">
-            <li class="active">
+            <li>
                 <a href="/mahasiswa">Master Mahasiswa</a>
             </li>
-            <li>
+            <li class="active">
                 <a href="/jurusan">Master Jurusan</a>
             </li>
         </ul>
     </nav>
     <div class="">
         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-            <form action="/mahasiswa" method="post" class="form-horizontal" role="form">
+            <form action="/jurusan" method="post" class="form-horizontal" role="form">
                 <div class="form-group">
-                    <legend>Tambah Mahasiswa</legend>
+                    <legend>Tambah Jurusan</legend>
                 </div>
                 <div class="form-group">
-                    <label for="nim" class="col-sm-2 control-label">NIM</label>
+                    <label for="kode" class="col-sm-2 control-label">Kode</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="nim" name="nim" placeholder="NIM">
+                        <input type="text" class="form-control" id="kode" name="kode" placeholder="Kode">
                     </div>
                 </div>
                 <div class="form-group">
@@ -46,13 +46,6 @@
                         <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama">
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="alamat" class="col-sm-2 control-label">Alamat</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Alamat">
-                    </div>
-                </div>
-
 
                 <div class="form-group">
                     <div class="col-sm-10 col-sm-offset-2">
@@ -65,26 +58,24 @@
             <thead>
             <tr>
                 <th>No</th>
-                <th>NIM</th>
+                <th>Kode</th>
                 <th>Nama</th>
-                <th>Alamat</th>
                 <th>Action</th>
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${mahasiswas}" var="mahasiswa" varStatus="loop">
+            <c:forEach items="${jurusans}" var="jurusan" varStatus="loop">
                 <tr>
                     <td>${loop.index+1}</td>
-                    <td>${mahasiswa.nim}</td>
-                    <td>${mahasiswa.nama}</td>
-                    <td>${mahasiswa.alamat}</td>
+                    <td>${jurusan.kode}</td>
+                    <td>${jurusan.nama}</td>
                     <td>
                         <a href="#modal-edit-${loop.index+1}" class="btn btn-primary btn-sm" data-toggle="modal"
                            href="#modal-id">Edit</a>
-                        <a href="/mahasiswa?id=${mahasiswa.id}" class="btn btn-danger btn-sm">Hapus</a>
+                        <a href="/jurusan?id=${jurusan.id}" class="btn btn-danger btn-sm">Hapus</a>
                     </td>
                 </tr>
-                <form action="/mahasiswa" method="post" class="form-horizontal" role="form">
+                <form action="/jurusan" method="post" class="form-horizontal" role="form">
                     <div class="modal fade" id="modal-edit-${loop.index+1}">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -94,29 +85,22 @@
                                     <h4 class="modal-title">Update Mahasiswa</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <input type="hidden" name="id" id="id" class="form-control" value="${mahasiswa.id}"
-                                           >
+                                    <input type="hidden" name="id" id="id" class="form-control" value="${jurusan.id}"
+                                    >
 
                                     <div class="row">
                                         <div class="form-group">
-                                            <label for="nim" class="col-sm-2 control-label">NIM</label>
+                                            <label for="kode" class="col-sm-2 control-label">Kode</label>
                                             <div class="col-sm-10">
-                                                <input value="${mahasiswa.nim}" type="text" class="form-control"
-                                                       id="nim" name="nim" placeholder="NIM">
+                                                <input value="${jurusan.kode}" type="text" class="form-control"
+                                                       id="kode" name="kode" placeholder="Kode">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="nama" class="col-sm-2 control-label">Nama</label>
                                             <div class="col-sm-10">
-                                                <input value="${mahasiswa.nama}" type="text" class="form-control"
+                                                <input value="${jurusan.nama}" type="text" class="form-control"
                                                        id="nama" name="nama" placeholder="Nama">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="alamat" class="col-sm-2 control-label">Alamat</label>
-                                            <div class="col-sm-10">
-                                                <input value="${mahasiswa.alamat}" type="text" class="form-control"
-                                                       id="alamat" name="alamat" placeholder="Alamat">
                                             </div>
                                         </div>
                                     </div>

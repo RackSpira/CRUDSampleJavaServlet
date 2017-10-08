@@ -49,7 +49,7 @@ public class MahasiswaDaoImplTest {
 
     public void find() throws Exception {
         List<Mahasiswa> mahasiswas = impl.find(0, 0);
-        System.out.println("find -> Mahasiswa count : " + mahasiswas.size());
+        System.out.println("find -> Mahasiswas : " + mahasiswas.toString());
         Assert.assertFalse(mahasiswas.isEmpty());
     }
 

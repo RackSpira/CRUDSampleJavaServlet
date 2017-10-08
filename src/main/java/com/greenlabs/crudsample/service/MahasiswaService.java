@@ -1,5 +1,7 @@
 package com.greenlabs.crudsample.service;
 
+import com.greenlabs.crudsample.dao.MahasiswaDao;
+import com.greenlabs.crudsample.dao.impl.MahasiswaDaoImpl;
 import com.greenlabs.crudsample.entity.Mahasiswa;
 
 import java.util.List;
@@ -9,23 +11,31 @@ import java.util.List;
  */
 public class MahasiswaService implements BaseService<Mahasiswa> {
 
+    private MahasiswaDao mahasiswaDao = new MahasiswaDaoImpl();
+
     @Override
     public Mahasiswa Save(Mahasiswa entity) {
-        return null;
+        if (entity.getId() == 0) {
+            entity = mahasiswaDao.Save(entity);
+        } else {
+            entity = mahasiswaDao.update(entity);
+        }
+
+        return entity;
     }
 
     @Override
     public List<Mahasiswa> find(int offset, int limit) {
-        return null;
+        return mahasiswaDao.find(offset, limit);
     }
 
     @Override
     public Mahasiswa findById(long id) {
-        return null;
+        return mahasiswaDao.findById(id);
     }
 
     @Override
     public String delete(long id) {
-        return null;
+        return mahasiswaDao.delete(id);
     }
 }
