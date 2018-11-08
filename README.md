@@ -1,11 +1,19 @@
-# CRUDSampleJavaServlet
+# WEB CRUD Java Servlet & JSP
 
-#clean and build project
+ini adalah contoh sederhana web crud menggunakan bahasa pemrograman JAVA
 
-mvn clean install
+Persiapan install
+- Maven (depedency management)
+- JDK 8
+- InteliJ Idea (Editor Recomended)
 
-#Running project
+## Command Line Interface
+1. clean and build project
 
-mvn jetty:run
+- mvn clean install
+
+2. Running project
+
+- mvn jetty:run
 
 url : http://localhost:8080
